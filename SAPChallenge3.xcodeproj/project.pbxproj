@@ -24,10 +24,41 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF3F80862EBDD19300479FAF /* equipment.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = equipment.xcodeproj; sourceTree = "<group>"; };
+		CF3F80872EBDD19300479FAF /* equipment.xcodeproj 14-58-07-639.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "equipment.xcodeproj 14-58-07-639.xcodeproj"; sourceTree = "<group>"; };
 		E546718E2EBC64CF00DBF5C3 /* SAPChallenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SAPChallenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E546719B2EBC64D100DBF5C3 /* SAPChallenge3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SAPChallenge3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E54671A52EBC64D100DBF5C3 /* SAPChallenge3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SAPChallenge3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CF3F80B12EBDD19400479FAF /* Exceptions for "SAPChallenge3Tests" folder in "SAPChallenge3" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				equipment/Assets.xcassets,
+				equipment/ContentView.swift,
+				equipment/equipmentApp.swift,
+				equipment/EquipmentView.swift,
+				equipmentTests/equipmentTests.swift,
+				equipmentUITests/equipmentUITests.swift,
+				equipmentUITests/equipmentUITestsLaunchTests.swift,
+			);
+			target = E546718D2EBC64CF00DBF5C3 /* SAPChallenge3 */;
+		};
+		CF3F80B22EBDD19400479FAF /* Exceptions for "SAPChallenge3Tests" folder in "SAPChallenge3Tests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				equipment/Assets.xcassets,
+				equipment/ContentView.swift,
+				equipment/equipmentApp.swift,
+				equipment/EquipmentView.swift,
+				equipmentTests/equipmentTests.swift,
+				equipmentUITests/equipmentUITests.swift,
+				equipmentUITests/equipmentUITestsLaunchTests.swift,
+			);
+			target = E546719A2EBC64D100DBF5C3 /* SAPChallenge3Tests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E54671902EBC64CF00DBF5C3 /* SAPChallenge3 */ = {
@@ -37,6 +68,10 @@
 		};
 		E546719E2EBC64D100DBF5C3 /* SAPChallenge3Tests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CF3F80B12EBDD19400479FAF /* Exceptions for "SAPChallenge3Tests" folder in "SAPChallenge3" target */,
+				CF3F80B22EBDD19400479FAF /* Exceptions for "SAPChallenge3Tests" folder in "SAPChallenge3Tests" target */,
+			);
 			path = SAPChallenge3Tests;
 			sourceTree = "<group>";
 		};
@@ -72,6 +107,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF3F80882EBDD19300479FAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF3F808A2EBDD19300479FAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E54671852EBC64CF00DBF5C3 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +247,16 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E546718F2EBC64CF00DBF5C3 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CF3F80882EBDD19300479FAF /* Products */;
+					ProjectRef = CF3F80862EBDD19300479FAF /* equipment.xcodeproj */;
+				},
+				{
+					ProductGroup = CF3F808A2EBDD19300479FAF /* Products */;
+					ProjectRef = CF3F80872EBDD19300479FAF /* equipment.xcodeproj 14-58-07-639.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E546718D2EBC64CF00DBF5C3 /* SAPChallenge3 */,
