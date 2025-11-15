@@ -63,3 +63,6 @@ struct ChallengeView: View {
 }
 
 
+#Preview {
+    ChallengeView()
+}
