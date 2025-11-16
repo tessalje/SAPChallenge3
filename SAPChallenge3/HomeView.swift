@@ -51,7 +51,6 @@ struct HomescreenView: View {
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 70, height: 70)
-                                            .clipShape(Circle())
                                     }
                                     Text("Collection")
                                         .foregroundColor(.black)
@@ -77,15 +76,22 @@ struct HomescreenView: View {
                             }
                             .alignmentGuide(.bottom) { d in d[.bottom] }
                             
-                            NavigationLink(destination: EquipmentView()) {
-                                VStack {
-                                    Circle()
-                                        .frame(width: 60, height: 60)
-                                        .foregroundStyle(.white)
-                                    Text("Equipment")
-                                        .foregroundStyle(.black)
+                            HStack(alignment: .bottom, spacing: 40) {
+                                NavigationLink(destination: EquipmentView()) {
+                                    VStack {
+                                        ZStack {
+                                            Circle()
+                                                .frame(width: 90, height: 90)
+                                                .foregroundColor(.white)
+                                            Image("equipment")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 60, height: 80)
+                                        }
+                                        Text("Equipment")
+                                            .foregroundColor(.black)
+                                    }
                                 }
-                                
                             }
                             .alignmentGuide(.bottom) { d in d[.bottom] }
                             .padding(.bottom, 40)

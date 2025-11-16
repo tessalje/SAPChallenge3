@@ -31,63 +31,61 @@ struct FishGetView: View {
 
     var body: some View {
         ZStack {
-            Color(red: 0.68, green: 0.88, blue: 1.0)
+            Color(red: 0.73, green: 0.89, blue: 1)
                 .ignoresSafeArea()
+                .opacity(0.6)
             
             VStack {
                 Text("YOU GOT...")
                     .font(.system(size: 36, weight: .heavy))
                     .foregroundColor(Color(red: 0, green: 0.5, blue: 0.8))
                     .padding(.bottom, 20)
+                    .offset(y: -100)
                 
                 ZStack {
-                    FishShape()
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [Color.blue.opacity(0.9), Color.blue.opacity(0.7)]),
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .frame(width: 260, height: 140)
-                        .overlay(
-                            Triangle()
-                                .fill(Color.blue.opacity(0.8))
-                                .frame(width: 60, height: 60)
-                                .offset(x: 130, y: 0)
-                        )
+                    Image("box")
+                        .resizable()
+                        .frame(width: 370, height: 420)
                     
+                    Image("hook2")
+                        .resizable()
+                        .frame(width: 310, height: 180)
+                        .offset(x: -50, y: -240)
                     
-                    Circle()
-                        .fill(Color.black)
-                        .frame(width: 12, height: 12)
-                        .offset(x: -80, y: -10)
-                    
+                    VStack {
+                        Image("fish")
+                            .resizable()
+                            .frame(width: 300, height: 250)
+                            .offset(y: 50)
+                            .padding(.bottom, 50)
+                        
+                        NavigationLink(destination: HomescreenView()) {
+                            Text("Upload Drawing")
+                                .foregroundStyle(.white)
+                                .padding(15)
+                                .padding(.horizontal, 50)
+                                .background(Color(red: 0, green: 0.5, blue: 0.8))
+                                .cornerRadius(50)
+                                .bold()
+                        }
+                        .padding(.top, 10)
+
+                    }
                     
                     Text(randomItem)
-                        .font(.system(size: 20, weight: .heavy))
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(.yellow)
-                        .padding(8)
-                        .background(Color.blue)
-                        .cornerRadius(5)
+                        .font(.system(size: 30))
+                        .bold()
+                        .foregroundColor(Color(red: 0.2, green: 0.5, blue: 0.8))
+                        .offset(y: -160)
                     
                     Circle()
-                        .fill(Color(red: 0.68, green: 0.88, blue: 1.0))
+                        .fill(Color.fishblue)
                         .frame(width: 35, height: mouthOpen ? 35 : 5)
-                        .offset(x: -130, y: 0)
-                        .animation(.easeInOut(duration: 0.6).repeatForever(autoreverses: true),
+                        .offset(x: -110, y: 30)
+                        .animation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true),
                                    value: mouthOpen)
+
                 }
-                
-                NavigationLink(destination: HomescreenView()) {
-                    Text("Done")
-                        .foregroundStyle(.white)
-                        .padding(10)
-                        .background(.blue)
-                        .cornerRadius(10)
-                }
-                .padding(.top, 20)
                 
             }
         }
@@ -111,6 +109,9 @@ struct FishGetView: View {
         } else if selectedRod == "Location Rod" {
             randomItem = locations.randomElement() ?? "A LOCATION!"
             addItemToCategory(item: randomItem)
+        } else if selectedRod == "Food Rod" {
+            randomItem = food.randomElement() ?? "A FOOD!"
+            addItemToCategory(item: randomItem)
         }
     }
 
@@ -130,33 +131,33 @@ struct FishGetView: View {
 }
 
 
-struct FishShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: rect.minX, y: rect.midY))
-        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.minY),
-                          control: CGPoint(x: rect.midX * 0.3, y: rect.minY))
-        path.addQuadCurve(to: CGPoint(x: rect.maxX - 25, y: rect.midY),
-                          control: CGPoint(x: rect.maxX, y: rect.midY - 40))
-        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.maxY),
-                          control: CGPoint(x: rect.maxX, y: rect.midY + 40))
-        path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.midY),
-                          control: CGPoint(x: rect.midX * 0.3, y: rect.maxY))
-        return path
-    }
-}
+//struct FishShape: Shape {
+//    func path(in rect: CGRect) -> Path {
+//        var path = Path()
+//        path.move(to: CGPoint(x: rect.minX, y: rect.midY))
+//        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.minY),
+//                          control: CGPoint(x: rect.midX * 0.3, y: rect.minY))
+//        path.addQuadCurve(to: CGPoint(x: rect.maxX - 25, y: rect.midY),
+//                          control: CGPoint(x: rect.maxX, y: rect.midY - 40))
+//        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.maxY),
+//                          control: CGPoint(x: rect.maxX, y: rect.midY + 40))
+//        path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.midY),
+//                          control: CGPoint(x: rect.midX * 0.3, y: rect.maxY))
+//        return path
+//    }
+//}
 
-
-struct Triangle: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: rect.minX, y: rect.midY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.closeSubpath()
-        return path
-    }
-}
+//
+//struct Triangle: Shape {
+//    func path(in rect: CGRect) -> Path {
+//        var path = Path()
+//        path.move(to: CGPoint(x: rect.minX, y: rect.midY))
+//        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+//        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+//        path.closeSubpath()
+//        return path
+//    }
+//}
 
 
 

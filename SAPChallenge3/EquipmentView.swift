@@ -52,19 +52,17 @@ struct EquipmentView: View {
                             
                             //button
                             VStack(spacing: 20) {
-                                Button("Random Rod") { selectedRod = "Random Rod" }
-                                Button("Animal Rod") { selectedRod = "Animal Rod" }
-                                Button("Object Rod") { selectedRod = "Object Rod" }
-                                Button("Location Rod") { selectedRod = "Location Rod" }
+                                Button("Random Rod ★") { selectedRod = "Random Rod" }
+                                Button("Animal Rod 🐠") { selectedRod = "Animal Rod" }
+                                Button("Object Rod ⚽️") { selectedRod = "Object Rod" }
+                                Button("Location Rod 🏠") { selectedRod = "Location Rod" }
+                                Button("Food Rod 🍕") { selectedRod = "Food Rod" }
                             }
-                            
                             .font(.system(size: 30))
                             .fontWeight(.semibold)
                             .foregroundColor(.lightteal)
                             .frame(width: 300, height:300)
                             .padding(.horizontal, 10)
-                            
-                            
                             .buttonStyle(.borderedProminent)
                             .tint(Color.saddarkblue)
                             
