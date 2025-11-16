@@ -24,6 +24,8 @@ class CollectedFish {
 
 struct FishGrid: View {
     let items: [CollectedFish.FishCollected]
+    
+    let fishImage: [String] = ["Redfish", "Greenfish", "Bluefish", "Purplefish",]
 
     let columns: [GridItem] = [
         GridItem(.flexible()),
@@ -33,8 +35,11 @@ struct FishGrid: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 10) {
-                ForEach(items) { item in
-                    FishItem(item: item)
+                ForEach(Array(items.enumerated()), id: \.offset) { index, item in
+                    
+                    let image = fishImage[index % fishImage.count]
+                    
+                    FishItem(item: item, image: image)
                 }
             }
             .padding()
@@ -45,10 +50,11 @@ struct FishGrid: View {
 
 struct FishItem: View {
     let item: CollectedFish.FishCollected
+    let image: String
 
     var body: some View {
         ZStack {
-            Image("Redfish")
+            Image(image)
                 .resizable()
                 .frame(width: 150, height: 110)
             

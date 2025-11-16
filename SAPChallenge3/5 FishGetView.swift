@@ -45,7 +45,7 @@ struct FishGetView: View {
                             .padding(.bottom, 50)
                         
                         NavigationLink(destination: GalleryView()) {
-                            Text("Upload Drawing")
+                            Text("Go to Gallery")
                                 .foregroundStyle(.white)
                                 .padding(15)
                                 .padding(.horizontal, 50)
