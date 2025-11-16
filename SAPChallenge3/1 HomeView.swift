@@ -10,6 +10,7 @@ import SwiftUI
 struct HomescreenView: View {
     @State private var path = NavigationPath()
     @AppStorage("island") var selectedIsland: Bool = false
+    @AppStorage("currentView") var currentView = 1
     
     var body: some View {
         NavigationStack{
@@ -25,6 +26,12 @@ struct HomescreenView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 170, height: 170)
                     Spacer()
+                    
+                    Button(action: {
+                        currentView = 1
+                    }, label: {
+                        Text("tutorial")
+                    })
                     
                     VStack{
                         HStack{
