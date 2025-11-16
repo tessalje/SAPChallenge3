@@ -89,14 +89,14 @@ struct FishingGameView: View {
                 }
                 
                 ZStack {
-                    Image("background")
+                    Image("water")
                         .resizable()
                         .ignoresSafeArea()
                     
                     if Catch == true {
                         Image("Hook")
                             .resizable()
-                            .frame(width: hookWidth, height: 90)
+                            .frame(width: hookWidth, height: 300)
                             .position(hookPosition)
                             .gesture(
                                 DragGesture()
@@ -187,3 +187,4 @@ struct FishingGameView: View {
 #Preview {
     FishingGameView()
 }
+

@@ -31,35 +31,6 @@
 		E54671A52EBC64D100DBF5C3 /* SAPChallenge3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SAPChallenge3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		CF3F80B12EBDD19400479FAF /* Exceptions for "SAPChallenge3Tests" folder in "SAPChallenge3" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				equipment/Assets.xcassets,
-				equipment/ContentView.swift,
-				equipment/equipmentApp.swift,
-				equipment/EquipmentView.swift,
-				equipmentTests/equipmentTests.swift,
-				equipmentUITests/equipmentUITests.swift,
-				equipmentUITests/equipmentUITestsLaunchTests.swift,
-			);
-			target = E546718D2EBC64CF00DBF5C3 /* SAPChallenge3 */;
-		};
-		CF3F80B22EBDD19400479FAF /* Exceptions for "SAPChallenge3Tests" folder in "SAPChallenge3Tests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				equipment/Assets.xcassets,
-				equipment/ContentView.swift,
-				equipment/equipmentApp.swift,
-				equipment/EquipmentView.swift,
-				equipmentTests/equipmentTests.swift,
-				equipmentUITests/equipmentUITests.swift,
-				equipmentUITests/equipmentUITestsLaunchTests.swift,
-			);
-			target = E546719A2EBC64D100DBF5C3 /* SAPChallenge3Tests */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E54671902EBC64CF00DBF5C3 /* SAPChallenge3 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -68,10 +39,6 @@
 		};
 		E546719E2EBC64D100DBF5C3 /* SAPChallenge3Tests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				CF3F80B12EBDD19400479FAF /* Exceptions for "SAPChallenge3Tests" folder in "SAPChallenge3" target */,
-				CF3F80B22EBDD19400479FAF /* Exceptions for "SAPChallenge3Tests" folder in "SAPChallenge3Tests" target */,
-			);
 			path = SAPChallenge3Tests;
 			sourceTree = "<group>";
 		};

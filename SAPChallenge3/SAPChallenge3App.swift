@@ -11,7 +11,7 @@ import SwiftUI
 struct SAPChallenge3App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomescreenView()
         }
     }
 }

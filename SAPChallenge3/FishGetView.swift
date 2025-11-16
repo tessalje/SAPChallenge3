@@ -61,7 +61,7 @@ struct FishGetView: View {
                     Circle()
                         .fill(Color.black)
                         .frame(width: 12, height: 12)
-                        .offset(x: -70, y: -10)
+                        .offset(x: -80, y: -10)
                     
                     
                     Text(randomItem)
@@ -135,13 +135,13 @@ struct FishShape: Shape {
         var path = Path()
         path.move(to: CGPoint(x: rect.minX, y: rect.midY))
         path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.minY),
-                          control: CGPoint(x: rect.midX * 0.5, y: rect.minY))
-        path.addQuadCurve(to: CGPoint(x: rect.maxX - 20, y: rect.midY),
+                          control: CGPoint(x: rect.midX * 0.3, y: rect.minY))
+        path.addQuadCurve(to: CGPoint(x: rect.maxX - 25, y: rect.midY),
                           control: CGPoint(x: rect.maxX, y: rect.midY - 40))
         path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.maxY),
                           control: CGPoint(x: rect.maxX, y: rect.midY + 40))
         path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.midY),
-                          control: CGPoint(x: rect.midX * 0.5, y: rect.maxY))
+                          control: CGPoint(x: rect.midX * 0.3, y: rect.maxY))
         return path
     }
 }
@@ -163,3 +163,4 @@ struct Triangle: Shape {
 #Preview {
     FishGetView()
 }
+

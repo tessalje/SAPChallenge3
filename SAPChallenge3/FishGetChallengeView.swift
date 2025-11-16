@@ -37,19 +37,20 @@ struct FishGetChallengeView: View {
                         .overlay(
                             Triangle()
                                 .fill(Color.blue.opacity(0.8))
-                                .frame(width: 60, height: 60)
+                                .frame(width: 80, height: 80)
                                 .offset(x: 130, y: 0)
                         )
                     
                     
                     Circle()
                         .fill(Color.black)
-                        .frame(width: 12, height: 12)
+                        .frame(width: 20, height: 15)
                         .offset(x: -70, y: -10)
                     
                     
                     Text(randomRod)
                         .font(.system(size: 20, weight: .heavy))
+                        .frame(maxWidth: 100)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.yellow)
                         .padding(8)
