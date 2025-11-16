@@ -21,6 +21,8 @@ struct CollectionView: View {
                 }
                 Spacer()
                 FishTankView()
+                    .frame(width: 400, height: 500)
+                
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.blue.opacity(0.8))
@@ -86,6 +88,9 @@ struct FishTankView: View {
                 }
             }
             .frame(width: tankWidth, height: tankHeight)
+            
+            FishGrid(items: CollectedFish.shared.categorised[
+                Calendar.current.startOfDay(for: Date())] ?? [])
         }
         .padding(.bottom, 30)
     }

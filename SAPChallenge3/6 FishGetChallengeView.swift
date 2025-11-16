@@ -15,19 +15,19 @@ struct FishGetChallengeView: View {
 
     var body: some View {
         ZStack {
-            Color(red: 0.73, green: 0.89, blue: 1)
+            Color(red: 0.83, green: 0.1, blue: 0.2)
                 .ignoresSafeArea()
-                .opacity(0.6)
+                .opacity(0.15)
             
             VStack {
                 Text("YOU GOT...")
                     .font(.system(size: 36, weight: .heavy))
-                    .foregroundColor(Color(red: 0, green: 0.5, blue: 0.8))
+                    .foregroundColor(Color.darkred)
                     .padding(.bottom, 20)
                     .offset(y: -100)
                 
                 ZStack {
-                    Image("box")
+                    Image("challengebox")
                         .resizable()
                         .frame(width: 370, height: 420)
                     
@@ -37,18 +37,18 @@ struct FishGetChallengeView: View {
                         .offset(x: -40, y: -255)
                     
                     VStack {
-                        Image("fish")
+                        Image("challengefish")
                             .resizable()
-                            .frame(width: 300, height: 250)
+                            .frame(width: 280, height: 220)
                             .offset(y: 50)
                             .padding(.bottom, 50)
                         
-                        NavigationLink(destination: HomescreenView()) {
-                            Text("Upload Drawing")
+                        NavigationLink(destination: ChallengeView()) {
+                            Text("Done")
                                 .foregroundStyle(.white)
                                 .padding(15)
                                 .padding(.horizontal, 50)
-                                .background(Color(red: 0, green: 0.5, blue: 0.8))
+                                .background(Color.darkred)
                                 .cornerRadius(50)
                                 .bold()
                         }
@@ -58,14 +58,14 @@ struct FishGetChallengeView: View {
                     Text(randomRod)
                         .font(.system(size: 22))
                         .bold()
-                        .foregroundColor(Color(red: 0.2, green: 0.5, blue: 0.8))
+                        .foregroundColor(Color.darkred)
                         .offset(y: -160)
-                        .frame(width: 340)
+                        .frame(width: 320)
                     
                     Circle()
-                        .fill(Color.fishblue)
+                        .fill(Color.fishred)
                         .frame(width: 35, height: mouthOpen ? 35 : 5)
-                        .offset(x: -110, y: 30)
+                        .offset(x: -110, y: 20)
                         .animation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true),
                                    value: mouthOpen)
 

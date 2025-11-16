@@ -27,12 +27,22 @@ struct ChallengeView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: HomescreenView()) {
-                        Image("PromptSign")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .scaleEffect(0.4)
-                        Spacer(minLength:90)
+                    HStack {
+                        NavigationLink(destination: HomescreenView()) {
+                            Image("PromptSign")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .scaleEffect(0.47)
+                                .offset(y: -50)
+                            
+                        }
+                        
+                        NavigationLink(destination: GalleryView()) {
+                            Image("paint")
+                                .resizable()
+                                .frame(width: 110, height: 110)
+                                .offset(x: -13, y: -100)
+                        }
                     }
                     
                     NavigationLink(destination: FishingGameView()) {

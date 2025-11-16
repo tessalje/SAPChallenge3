@@ -171,15 +171,16 @@ struct FishingGameView: View {
                     }
                 }
             }
-            .navigationDestination(isPresented: $isFishCaught, destination: {
-                if selectedIsland == false {
-                    FishGetView()
-                } else{
-                    FishGetChallengeView()
+            .navigationDestination(isPresented: $isFishCaught) {
+                Group {
+                    if selectedIsland == false {
+                        FishGetView()
+                    } else {
+                        FishGetChallengeView()
+                    }
                 }
-            })
+            }
             .background(.cyan.opacity(0.5))
-        
         }
     }
 }

@@ -8,21 +8,6 @@
 import SwiftUI
 
 
-class CollectedFish {
-    static let shared = CollectedFish()
-    
-    var categorised: [Date: [FishCollected]] = [:]
-    
-    var sortedDates: [Date] {
-        categorised.keys.sorted(by: >)
-    }
-    
-    struct FishCollected: Identifiable, Hashable, Codable {
-        var id = UUID()
-        let name: String
-    }
-}
-
 struct FishGetView: View {
     @State private var mouthOpen = true
     @State private var randomItem = ""
@@ -59,7 +44,7 @@ struct FishGetView: View {
                             .offset(y: 50)
                             .padding(.bottom, 50)
                         
-                        NavigationLink(destination: HomescreenView()) {
+                        NavigationLink(destination: GalleryView()) {
                             Text("Upload Drawing")
                                 .foregroundStyle(.white)
                                 .padding(15)
@@ -99,34 +84,35 @@ struct FishGetView: View {
     func generateNewItem() {
         if selectedRod == "Animal Rod" {
             randomItem = animals.randomElement() ?? "AN ANIMAL!"
-            addItemToCategory(item: randomItem)
+            saveFishy(item: randomItem)
         } else if selectedRod == "Object Rod" {
             randomItem = items.randomElement() ?? "AN OBJECT!"
-            addItemToCategory(item: randomItem)
+            saveFishy(item: randomItem)
         } else if selectedRod == "Random Rod" {
             randomItem = combinedRod.randomElement() ?? ""
-            addItemToCategory(item: randomItem)
+            saveFishy(item: randomItem)
         } else if selectedRod == "Location Rod" {
             randomItem = locations.randomElement() ?? "A LOCATION!"
-            addItemToCategory(item: randomItem)
+            saveFishy(item: randomItem)
         } else if selectedRod == "Food Rod" {
             randomItem = food.randomElement() ?? "A FOOD!"
-            addItemToCategory(item: randomItem)
+            saveFishy(item: randomItem)
         }
     }
 
-    func addItemToCategory(item: String) {
+    func saveFishy(item: String) {
         let today = Calendar.current.startOfDay(for: Date())
         
         let fish = CollectedFish.FishCollected(name: item)
         
-        if var todayItem = CollectedFish.shared.categorised[today] {
-            todayItem.append(fish)
-            CollectedFish.shared.categorised[today] = todayItem
+        if var todayFishes = CollectedFish.shared.categorised[today] {
+            todayFishes.append(fish)
+            CollectedFish.shared.categorised[today] = todayFishes
             
         } else {
             CollectedFish.shared.categorised[today] = [fish]
         }
+        print(CollectedFish.shared.categorised)
     }
 }
 

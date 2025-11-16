@@ -27,17 +27,22 @@ struct HomescreenView: View {
                     Spacer()
                     
                     VStack{
-                        
                         HStack{
                             NavigationLink(destination: ChallengeView()) {
                                 Image("ChallengeSign")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .scaleEffect(0.5)
-                                
-                                Spacer(minLength:90)
+                                    .offset(y: 20)
                             }
-                            .offset(y: 50)
+                            
+                            NavigationLink(destination: GalleryView()) {
+                                Image("paint")
+                                    .resizable()
+                                    .frame(width: 110, height: 110)
+                                    .offset(x: -13, y: -40)
+                            }
+                                
                         }
                         
                         HStack(alignment: .bottom, spacing: 40) {
