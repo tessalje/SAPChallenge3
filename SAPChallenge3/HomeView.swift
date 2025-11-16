@@ -37,18 +37,26 @@ struct HomescreenView: View {
                                 
                                 Spacer(minLength:90)
                             }
+                            .offset(y: 50)
                         }
-                        HStack(alignment: .bottom, spacing:40) {
+                        
+                        HStack(alignment: .bottom, spacing: 40) {
                             NavigationLink(destination: CollectionView()) {
                                 VStack {
-                                    Circle()
-                                        .frame(width: 60, height: 60)
-                                        .foregroundStyle(.white)
+                                    ZStack {
+                                        Circle()
+                                            .frame(width: 90, height: 90)
+                                            .foregroundColor(.white)
+                                        Image("Bucket")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 70, height: 70)
+                                            .clipShape(Circle())
+                                    }
                                     Text("Collection")
-                                        .foregroundStyle(.black)
+                                        .foregroundColor(.black)
                                 }
                             }
-                            .alignmentGuide(.bottom) { d in d[.bottom] }
                             
                             NavigationLink(destination: FishingGameView()) {
                                 
