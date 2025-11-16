@@ -11,9 +11,10 @@ struct HomescreenView: View {
     @State private var path = NavigationPath()
     @AppStorage("island") var selectedIsland: Bool = false
     @AppStorage("currentView") var currentView = 1
+    @State private var showOnboarding = false
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             ZStack{
                 Image("Homepage")
                     .resizable()
@@ -105,6 +106,27 @@ struct HomescreenView: View {
                         }
                     }
                 }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        currentView = 1
+                        showOnboarding = true
+                    }, label: {
+                        Image(systemName: "list.clipboard.fill")
+                    })
+                    .padding(10)
+                }
+            }
+            
+        }
+        .sheet(isPresented: $showOnboarding, onDismiss: {
+        }) {
+            OnboardingView()
+        }
+        .onChange(of: currentView) {
+            if currentView == 6 {
+                showOnboarding = false
             }
         }
         .onAppear {

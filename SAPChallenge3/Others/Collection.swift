@@ -60,7 +60,7 @@ struct FishItem: View {
             
             Text(item.name)
                 .font(.headline)
-                .foregroundColor(.white)
+                .foregroundColor(.black)
         }
     }
 }

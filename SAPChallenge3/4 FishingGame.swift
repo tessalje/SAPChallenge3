@@ -15,7 +15,7 @@ struct FishingGameView: View {
     @State private var bluePosition = CGPoint(x: -100, y: 300)
     @State private var purplePosition = CGPoint(x: -100, y: 500)
     
-    let hookWidth: CGFloat = 70
+    let hookWidth: CGFloat = 100
     let redWidth: CGFloat = 100
     let greenWidth: CGFloat = 100
     let blueWidth: CGFloat = 90
@@ -35,9 +35,9 @@ struct FishingGameView: View {
     func checkCollision() {
         let hookFrame = CGRect(
             x: hookPosition.x - hookWidth/2,
-            y: hookPosition.y - hookWidth/2,
+            y: hookPosition.y - 80/2,
             width: hookWidth,
-            height: hookWidth
+            height: 80
         )
         
         let fishFrames = [
@@ -76,16 +76,22 @@ struct FishingGameView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                if isTextCaught == true {
-                    Text("YOU CAUGHT A FISH!")
-                        .font(.system(.title, design: .monospaced))
-                        .bold()
-                        .foregroundStyle(.white)
-                } else {
-                    Text("GO FISH!")
-                        .font(.system(.title, design: .monospaced))
-                        .bold()
-                        .foregroundStyle(.white)
+                HStack {
+                    if isTextCaught == true {
+                        Text("YOU CAUGHT A FISH!")
+                            .font(.system(.title, design: .monospaced))
+                            .bold()
+                            .foregroundStyle(.white)
+                    } else {
+                        Text("GO FISH!")
+                            .font(.system(.title, design: .monospaced))
+                            .bold()
+                            .foregroundStyle(.white)
+                    }
+                    
+                    Image("equipment")
+                        .resizable()
+                        .frame(width: 60, height: 50)
                 }
                 
                 ZStack {
@@ -96,7 +102,7 @@ struct FishingGameView: View {
                     if Catch == true {
                         Image("Hook")
                             .resizable()
-                            .frame(width: hookWidth, height: 300)
+                            .frame(width: hookWidth, height: 80)
                             .position(hookPosition)
                             .gesture(
                                 DragGesture()

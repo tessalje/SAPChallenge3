@@ -78,7 +78,6 @@ struct OnboardingView: View {
     @AppStorage("currentView") var currentView = 1
     
     var body: some View {
-        
         if currentView == 1 {
             TutoralView(title: "Step 1",image: "onboarding1")
         } else if currentView == 2 {
@@ -89,8 +88,7 @@ struct OnboardingView: View {
             TutoralView(title: "Step 4",image: "onboarding4")
         } else if currentView == 5 {
             TutoralView(title: "Step 5",image: "onboarding5")
-        }
-        if currentView == 6 {
+        } else if currentView == 6 {
             HomescreenView()
         }
         
