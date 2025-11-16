@@ -59,7 +59,7 @@ struct TutoralView: View {
             .offset(x: 120, y: 360)
             
             Button(action:{
-                currentView = 4
+                currentView = 6
             }, label: {
                 HStack {
                     Text("Skip")

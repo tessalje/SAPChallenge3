@@ -27,12 +27,6 @@ struct HomescreenView: View {
                         .frame(width: 170, height: 170)
                     Spacer()
                     
-                    Button(action: {
-                        currentView = 1
-                    }, label: {
-                        Text("tutorial")
-                    })
-                    
                     VStack{
                         HStack{
                             NavigationLink(destination: ChallengeView()) {
