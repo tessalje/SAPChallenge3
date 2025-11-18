@@ -81,12 +81,12 @@ struct FishingGameView: View {
                         Text("YOU CAUGHT A FISH!")
                             .font(.system(.title, design: .monospaced))
                             .bold()
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.saddarkblue)
                     } else {
                         Text("GO FISH!")
                             .font(.system(.title, design: .monospaced))
                             .bold()
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.saddarkblue)
                     }
                     
                     Image("equipment")
@@ -186,7 +186,7 @@ struct FishingGameView: View {
                     }
                 }
             }
-            .background(.cyan.opacity(0.5))
+            .background(Color.bgcolor)
         }
     }
 }
@@ -194,4 +194,5 @@ struct FishingGameView: View {
 #Preview {
     FishingGameView()
 }
+
 

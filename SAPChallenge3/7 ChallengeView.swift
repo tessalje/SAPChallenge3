@@ -33,7 +33,6 @@ struct ChallengeView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .scaleEffect(0.47)
-                                .offset(y: -50)
                             
                         }
                         
@@ -41,9 +40,10 @@ struct ChallengeView: View {
                             Image("paint")
                                 .resizable()
                                 .frame(width: 110, height: 110)
-                                .offset(x: -13, y: -100)
                         }
+                        .offset(y: -50)
                     }
+                    .offset(y: -50)
                     
                     NavigationLink(destination: FishingGameView()) {
                         Text("Cast Rod!")
@@ -76,3 +76,4 @@ struct ChallengeView: View {
 #Preview {
     ChallengeView()
 }
+

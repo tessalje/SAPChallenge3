@@ -87,3 +87,4 @@ struct EquipmentView: View {
 #Preview {
     EquipmentView()
 }
+

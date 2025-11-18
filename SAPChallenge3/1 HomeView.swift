@@ -26,7 +26,7 @@ struct HomescreenView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 170, height: 170)
-                    Spacer()
+                    Spacer(minLength: 90)
                     
                     VStack{
                         HStack{
@@ -38,13 +38,14 @@ struct HomescreenView: View {
                                     .offset(y: 20)
                             }
                             
-                            NavigationLink(destination: GalleryView()) {
-                                Image("paint")
-                                    .resizable()
-                                    .frame(width: 110, height: 110)
-                                    .offset(x: -13, y: -40)
+                            VStack{
+                                NavigationLink(destination: GalleryView()) {
+                                    Image("paint")
+                                        .resizable()
+                                        .frame(width: 100, height: 110)
+                                        .offset(y: -50)
+                                }
                             }
-                                
                         }
                         
                         HStack(alignment: .bottom, spacing: 40) {
@@ -60,24 +61,26 @@ struct HomescreenView: View {
                                             .frame(width: 70, height: 70)
                                     }
                                     Text("Collection")
-                                        .foregroundColor(.black)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.saddarkblue)
                                 }
                             }
                             
                             NavigationLink(destination: FishingGameView()) {
                                 
                                 Text("Cast Rod!")
+                                    .fontWeight(.bold)
                                     .multilineTextAlignment(.center)
                                     .padding(20)
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(Color.saddarkblue)
                                     .background(
                                         ZStack{
                                             Circle()
-                                                .fill(Color.blue)
+                                                .fill(Color.lightteal)
                                                 .frame(width: 100, height: 100)
                                             
                                             Circle()
-                                                .stroke(Color.saddarkblue, lineWidth: 5)
+                                                .stroke(Color.saddarkblue, lineWidth: 10)
                                                 .frame(width: 100, height: 100)
                                         })
                             }
@@ -96,7 +99,8 @@ struct HomescreenView: View {
                                                 .frame(width: 60, height: 80)
                                         }
                                         Text("Equipment")
-                                            .foregroundColor(.black)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.saddarkblue)
                                     }
                                 }
                             }
@@ -113,7 +117,7 @@ struct HomescreenView: View {
                         currentView = 1
                         showOnboarding = true
                     }, label: {
-                        Image(systemName: "list.clipboard.fill")
+                        Image(systemName: "book.fill")
                     })
                     .padding(10)
                 }
@@ -138,3 +142,4 @@ struct HomescreenView: View {
 #Preview {
     HomescreenView()
 }
+
