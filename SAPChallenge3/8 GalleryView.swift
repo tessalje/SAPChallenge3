@@ -57,7 +57,6 @@ struct GalleryView: View {
                                     .background(Color.sadturquoise)
                                     .foregroundColor(.white)
                                     .cornerRadius(10)
-                                
                             }
                             .onChange(of: selectedPhotos) { newItems in
                                 Task {
@@ -76,21 +75,10 @@ struct GalleryView: View {
                     } else {
                         LazyVGrid(columns: columns) {
                             ForEach(images, id: \.self) { uiImage in
-                                ZStack(aligntment: .topTrailing) {
                                     Image(uiImage: uiImage)
                                         .resizable()
-                                        .frame(width: 200, height: 150)
+                                        .frame(width: 190, height: 150)
                                         .cornerRadius(5)
-                                    
-//                                    Button(action: {
-//                                        images.remove(at: index)
-//                                    }) {
-//                                        Image(systemName: "trash")
-//                                            .foregroundColor(.red)
-//                                            .shadow(radius: 4)
-//                                    }
-                                
-                                }
                             }
                             
                         }
@@ -101,6 +89,7 @@ struct GalleryView: View {
                 }
             }
             .navigationTitle("Art Gallery")
+            .navigationBarBackButtonHidden()
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Add", systemImage: "camera") {
@@ -108,6 +97,12 @@ struct GalleryView: View {
                     }
                     .sheet(isPresented: $showingCamera) {
                         CameraView(image: $selectedImage)
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarLeading) {
+                    NavigationLink(destination: HomescreenView()) {
+                        Image(systemName: "house")
                     }
                 }
             }
