@@ -80,7 +80,7 @@ struct HomescreenView: View {
                                                 .frame(width: 100, height: 100)
                                             
                                             Circle()
-                                                .stroke(Color.saddarkblue, lineWidth: 10)
+                                                .stroke(Color.saddarkblue, lineWidth: 4)
                                                 .frame(width: 100, height: 100)
                                         })
                             }

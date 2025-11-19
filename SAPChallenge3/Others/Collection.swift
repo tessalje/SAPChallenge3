@@ -59,18 +59,11 @@ struct FishItem: View {
                 .frame(width: 150, height: 110)
             
             Text(item.name)
+                .padding(6)
                 .font(.headline)
-                .foregroundColor(.black)
-        }
-    }
-}
-
-struct FishGrid_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            let today = Calendar.current.startOfDay(for: Date())
-
-            FishGrid(items: CollectedFish.shared.categorised[today] ?? [])
+                .foregroundColor(.white)
+                .background(Color.gray.opacity(0.67))
+                .cornerRadius(10)
         }
     }
 }
