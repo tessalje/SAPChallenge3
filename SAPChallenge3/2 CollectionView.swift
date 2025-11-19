@@ -89,8 +89,7 @@ struct FishTankView: View {
             }
             .frame(width: tankWidth, height: tankHeight)
             
-            FishGrid(items: CollectedFish.shared.categorised[
-                Calendar.current.startOfDay(for: Date())] ?? [])
+            FishGrid()
         }
         .padding(.bottom, 30)
     }

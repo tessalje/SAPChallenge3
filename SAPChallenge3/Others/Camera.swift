@@ -6,16 +6,25 @@
 //
 
 import SwiftUI
+import SwiftData
 import UIKit
 import PhotosUI
-
-class GalleryViewModel: ObservableObject {
-    @Published var images: [UIImage] = []
-}
 
 extension Notification.Name {
     static let cameraImageCaptured = Notification.Name("cameraImageCaptured")
 }
+
+@Model
+class Photo: Identifiable {
+    var id = UUID()
+    var data: Data
+    
+    init(id: UUID = UUID(), data: Data) {
+        self.data = data
+    }
+}
+
+
 
 struct CameraView: UIViewControllerRepresentable {
     @Binding var image: UIImage?

@@ -12,6 +12,8 @@ struct FishGetView: View {
     @State private var mouthOpen = true
     @State private var randomItem = ""
     
+    @Environment(\.modelContext) var modelContext
+    
     @AppStorage("rod") var selectedRod: String = "Random Rod"
 
     var body: some View {
@@ -103,16 +105,8 @@ struct FishGetView: View {
     func saveFishy(item: String) {
         let today = Calendar.current.startOfDay(for: Date())
         
-        let fish = CollectedFish.FishCollected(name: item)
-        
-        if var todayFishes = CollectedFish.shared.categorised[today] {
-            todayFishes.append(fish)
-            CollectedFish.shared.categorised[today] = todayFishes
-            
-        } else {
-            CollectedFish.shared.categorised[today] = [fish]
-        }
-        print(CollectedFish.shared.categorised)
+        let fish = FishCollected(name: item, date: today)
+        modelContext.insert(fish)
     }
 }
 

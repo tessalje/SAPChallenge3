@@ -6,24 +6,36 @@
 //
 
 import SwiftUI
+import SwiftData
 
-class CollectedFish {
-    static let shared = CollectedFish()
+
+//
+//class CollectedFish {
+//    static let shared = CollectedFish()
+//    
+//    var categorised: [Date: [FishCollected]] = [:]
+//    
+//    var sortedDates: [Date] {
+//        categorised.keys.sorted(by: >)
+//    }
+//    
+//}
+
+@Model
+class FishCollected: Identifiable {
+    var id = UUID()
+    var name: String
+    var date: Date
     
-    var categorised: [Date: [FishCollected]] = [:]
-    
-    var sortedDates: [Date] {
-        categorised.keys.sorted(by: >)
-    }
-    
-    struct FishCollected: Identifiable, Hashable, Codable {
-        var id = UUID()
-        let name: String
+    init(id: UUID = UUID(), name: String, date: Date) {
+        self.id = id
+        self.name = name
+        self.date = date
     }
 }
-
+    
 struct FishGrid: View {
-    let items: [CollectedFish.FishCollected]
+    @Query var items: [FishCollected]
     
     let fishImage: [String] = ["Redfish", "Greenfish", "Bluefish", "Purplefish",]
 
@@ -49,7 +61,7 @@ struct FishGrid: View {
 }
 
 struct FishItem: View {
-    let item: CollectedFish.FishCollected
+    let item: FishCollected
     let image: String
 
     var body: some View {

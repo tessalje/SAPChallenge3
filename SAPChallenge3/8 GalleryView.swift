@@ -8,12 +8,14 @@
 import PhotosUI
 import SwiftUI
 import UIKit
+import SwiftData
 
 struct GalleryView: View {
     @State private var selectedImage: UIImage?
     @State private var showingCamera = false
     @State private var selectedPhotos: [PhotosPickerItem] = []
-    @State private var images: [UIImage] = []
+    @Environment(\.modelContext) var modelContext
+    @Query var images: [Photo]
     let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -28,63 +30,60 @@ struct GalleryView: View {
                     .ignoresSafeArea()
                 
                 ScrollView {
-                    if images.isEmpty {
-                        Text("No image uploaded")
-                            .foregroundStyle(.gray)
-                            .padding(.top, 100)
-                        
-                        HStack {
-                            Button(action: {
-                                showingCamera = true
-                            }) {
-                                Text("Take photo")
-                                    .font(.headline)
-                                    .padding()
-                                    .frame(width: 180)
-                                    .background(Color.saddarkblue)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                            }
-                            .sheet(isPresented: $showingCamera) {
-                                CameraView(image: $selectedImage)
-                            }
-                            
-                            PhotosPicker(selection: $selectedPhotos, matching: .images, photoLibrary: .shared()) {
-                                Text("Select Photo")
-                                    .font(.headline)
-                                    .padding()
-                                    .frame(width: 180)
-                                    .background(Color.sadturquoise)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                            }
-                            .onChange(of: selectedPhotos) { newItems in
-                                Task {
-                                    images.removeAll()
-                                    for item in newItems {
-                                        if let data = try? await item.loadTransferable(type: Data.self) {
-                                            if let uiImage = UIImage(data: data) {
-                                                images.append(uiImage)
+//                    if images.isEmpty {
+//                        Text("No image uploaded")
+//                            .foregroundStyle(.gray)
+//                            .padding(.top, 100)
+//                        
+//                        HStack {
+//                            Button(action: {
+//                                showingCamera = true
+//                            }) {
+//                                Text("Take photo")
+//                                    .font(.headline)
+//                                    .padding()
+//                                    .frame(width: 180)
+//                                    .background(Color.saddarkblue)
+//                                    .foregroundColor(.white)
+//                                    .cornerRadius(10)
+//                            }
+//                            
+//                            PhotosPicker(selection: $selectedPhotos, matching: .images, photoLibrary: .shared()) {
+//                                Text("Select Photo")
+//                                    .font(.headline)
+//                                    .padding()
+//                                    .frame(width: 180)
+//                                    .background(Color.sadturquoise)
+//                                    .foregroundColor(.white)
+//                                    .cornerRadius(10)
+//                            }
+//                        }
+//                    } else {
+                        LazyVGrid(columns: columns) {
+                                ForEach(images, id: \.self) { photo in
+                                    if let uiImage = UIImage(data: photo.data) {
+                                        ZStack(alignment: .topTrailing) {
+                                            Image(uiImage: uiImage)
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: 190, height: 150)
+                                                .cornerRadius(5)
+                                            Button(action: {
+                                                modelContext.delete(photo)
+                                            }) {
+                                                Image(systemName: "trash")
+                                                    .foregroundStyle(.red)
+                                                    .font(.system(size: 20))
+                                                    .padding(8)
                                             }
+                                            
                                         }
                                     }
                                 }
-                            }
-                        }
-                        
-                    } else {
-                        LazyVGrid(columns: columns) {
-                            ForEach(images, id: \.self) { uiImage in
-                                    Image(uiImage: uiImage)
-                                        .resizable()
-                                        .frame(width: 190, height: 150)
-                                        .cornerRadius(5)
-                            }
-                            
                         }
                         .padding(.top, 60)
                         
-                    }
+//                    }
                     
                 }
             }
@@ -92,11 +91,14 @@ struct GalleryView: View {
             .navigationBarBackButtonHidden()
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Add", systemImage: "camera") {
-                        showingCamera = true
-                    }
-                    .sheet(isPresented: $showingCamera) {
-                        CameraView(image: $selectedImage)
+                    HStack {
+                        Button("Add", systemImage: "camera") {
+                            showingCamera = true
+                        }
+                        
+                        PhotosPicker(selection: $selectedPhotos, matching: .images, photoLibrary: .shared()) {
+                            Image(systemName: "photo")
+                        }
                     }
                 }
                 
@@ -106,7 +108,28 @@ struct GalleryView: View {
                     }
                 }
             }
+            .sheet(isPresented: $showingCamera) {
+                CameraView(image: $selectedImage)
+            }
+            .onChange(of: selectedImage) {
+                if let selectedImage, let data = selectedImage.pngData() {
+                    savePics(data: data)
+                }
+            }
+            .onChange(of: selectedPhotos) { newItems in
+                Task {
+                    for item in newItems {
+                        if let data = try? await item.loadTransferable(type: Data.self) {
+                            savePics(data: data)
+                        }
+                    }
+                }
+            }
         }
+    }
+    func savePics(data: Data) {
+        let photo = Photo(data: data)
+        modelContext.insert(photo)
     }
 }
 
