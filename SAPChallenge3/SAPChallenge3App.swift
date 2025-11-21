@@ -24,7 +24,7 @@ struct SAPChallenge3App: App {
     }
     var body: some Scene {
         WindowGroup {
-            OnboardingView()
+            PromptView()
         }
         .modelContainer(container)
     }

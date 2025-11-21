@@ -12,6 +12,9 @@ struct FishGetView: View {
     @State private var mouthOpen = true
     @State private var randomItem = ""
     
+    @AppStorage("promptView") var promptView = 1
+    
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) var modelContext
     
     @AppStorage("rod") var selectedRod: String = "Random Rod"
@@ -46,27 +49,34 @@ struct FishGetView: View {
                             .offset(y: 50)
                             .padding(.bottom, 50)
                         
-                        NavigationLink(destination: GalleryView()) {
+                        Button{
+                            dismiss()
+                            promptView = 3
+                        } label: {
                             Text("Go to Gallery")
-                                .foregroundStyle(.white)
-                                .padding(15)
-                                .padding(.horizontal, 50)
-                                .background(Color(red: 0, green: 0.5, blue: 0.8))
-                                .cornerRadius(50)
-                                .bold()
-                            
                         }
-                        NavigationLink(destination: HomescreenView()) {
+                        .foregroundStyle(.white)
+                        .padding(15)
+                        .padding(.horizontal, 50)
+                        .background(Color(red: 0, green: 0.5, blue: 0.8))
+                        .cornerRadius(50)
+                        .bold()
+                        
+                        Button {
+                            dismiss()
+                            promptView = 1
+                        } label: {
                             Text("Go to Home")
-                                .foregroundStyle(.white)
-                                .padding(15)
-                                .padding(.horizontal, 50)
-                                .background(Color(red: 0, green: 0.5, blue: 0.8))
-                                .cornerRadius(50)
-                                .bold()
                             
                         }
+                        .foregroundStyle(.white)
+                        .padding(15)
+                        .padding(.horizontal, 50)
+                        .background(Color(red: 0, green: 0.5, blue: 0.8))
+                        .cornerRadius(50)
+                        .bold()
                         .padding(.top, 10)
+                        
 
                     }
                     
@@ -121,34 +131,6 @@ struct FishGetView: View {
     }
 }
 
-
-//struct FishShape: Shape {
-//    func path(in rect: CGRect) -> Path {
-//        var path = Path()
-//        path.move(to: CGPoint(x: rect.minX, y: rect.midY))
-//        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.minY),
-//                          control: CGPoint(x: rect.midX * 0.3, y: rect.minY))
-//        path.addQuadCurve(to: CGPoint(x: rect.maxX - 25, y: rect.midY),
-//                          control: CGPoint(x: rect.maxX, y: rect.midY - 40))
-//        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.maxY),
-//                          control: CGPoint(x: rect.maxX, y: rect.midY + 40))
-//        path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.midY),
-//                          control: CGPoint(x: rect.midX * 0.3, y: rect.maxY))
-//        return path
-//    }
-//}
-
-//
-//struct Triangle: Shape {
-//    func path(in rect: CGRect) -> Path {
-//        var path = Path()
-//        path.move(to: CGPoint(x: rect.minX, y: rect.midY))
-//        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
-//        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-//        path.closeSubpath()
-//        return path
-//    }
-//}
 
 
 

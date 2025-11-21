@@ -5,6 +5,14 @@
 //  Created by Tessa Lee on 6/11/25.
 //
 
+
+//
+//  FishingGame.swift
+//  SAPChallenge3
+//
+//  Created by Tessa Lee on 6/11/25.
+//
+
 import SwiftUI
 
 struct FishingGameView: View {
@@ -101,7 +109,7 @@ struct FishingGameView: View {
                                     .frame(width: 60, height: 50)
                             }
                             
-                            Text("Drag net to catch fishes")
+                            Text("Drag net to catch a fish")
                                 .font(.system(size: 18))
                                 .bold()
                                 .foregroundStyle(.saddarkblue)
