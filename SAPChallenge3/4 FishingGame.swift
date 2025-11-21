@@ -78,20 +78,35 @@ struct FishingGameView: View {
             VStack {
                 HStack {
                     if isTextCaught == true {
-                        Text("YOU CAUGHT A FISH!")
-                            .font(.system(.title, design: .monospaced))
-                            .bold()
-                            .foregroundStyle(.saddarkblue)
+                        HStack {
+                            Text("YOU CAUGHT A FISH!")
+                                .font(.system(.title, design: .monospaced))
+                                .bold()
+                                .foregroundStyle(.saddarkblue)
+                            
+                            Image("equipment")
+                                .resizable()
+                                .frame(width: 60, height: 50)
+                        }
                     } else {
-                        Text("GO FISH!")
-                            .font(.system(.title, design: .monospaced))
-                            .bold()
-                            .foregroundStyle(.saddarkblue)
+                        VStack{
+                            HStack {
+                                Text("GO FISH!")
+                                    .font(.system(.title, design: .monospaced))
+                                    .bold()
+                                    .foregroundStyle(.saddarkblue)
+                                
+                                Image("equipment")
+                                    .resizable()
+                                    .frame(width: 60, height: 50)
+                            }
+                            
+                            Text("Drag net to catch fishes")
+                                .font(.system(size: 18))
+                                .bold()
+                                .foregroundStyle(.saddarkblue)
+                        }
                     }
-                    
-                    Image("equipment")
-                        .resizable()
-                        .frame(width: 60, height: 50)
                 }
                 
                 ZStack {
@@ -99,18 +114,18 @@ struct FishingGameView: View {
                         .resizable()
                         .ignoresSafeArea()
                     
-                    if Catch == true {
-                        Image("Hook")
-                            .resizable()
-                            .frame(width: hookWidth, height: 80)
-                            .position(hookPosition)
-                            .gesture(
-                                DragGesture()
-                                    .onChanged { value in
-                                        hookPosition = value.location
-                                        checkCollision()
-                                    })
-                    }
+                    
+                    Image("Hook")
+                        .resizable()
+                        .frame(width: hookWidth, height: 80)
+                        .position(hookPosition)
+                        .gesture(
+                            DragGesture()
+                                .onChanged { value in
+                                    hookPosition = value.location
+                                    checkCollision()
+                                })
+                    
                     
                     Image("Purplefish")
                         .resizable()
@@ -135,20 +150,6 @@ struct FishingGameView: View {
                         .scaleEffect(x: -1)
                         .frame(width: blueWidth , height: 60)
                         .position(bluePosition)
-                    
-                    Button(action: {
-                        Catch = true
-                    }){
-                        ZStack {
-                            Circle()
-                                .frame(width: 100, height: 100)
-                                .foregroundStyle(.cyan)
-                            Text("catch")
-                                .foregroundStyle(.white)
-                                .font(.system(.title, design: .rounded))
-                        }
-                    }
-                    .offset(y: 300)
                     
                 }
                 .onAppear {

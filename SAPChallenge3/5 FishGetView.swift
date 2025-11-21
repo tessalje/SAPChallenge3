@@ -32,7 +32,7 @@ struct FishGetView: View {
                 ZStack {
                     Image("box")
                         .resizable()
-                        .frame(width: 370, height: 420)
+                        .frame(width: 370, height: 490)
                     
                     Image("hook2")
                         .resizable()
@@ -54,6 +54,17 @@ struct FishGetView: View {
                                 .background(Color(red: 0, green: 0.5, blue: 0.8))
                                 .cornerRadius(50)
                                 .bold()
+                            
+                        }
+                        NavigationLink(destination: HomescreenView()) {
+                            Text("Go to Home")
+                                .foregroundStyle(.white)
+                                .padding(15)
+                                .padding(.horizontal, 50)
+                                .background(Color(red: 0, green: 0.5, blue: 0.8))
+                                .cornerRadius(50)
+                                .bold()
+                            
                         }
                         .padding(.top, 10)
 

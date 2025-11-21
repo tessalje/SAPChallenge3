@@ -5,6 +5,9 @@
 //  Created by Tessa Lee on 6/11/25.
 //
 
+//coditional randering (if else)
+
+
 import SwiftUI
 
 struct HomescreenView: View {
@@ -31,7 +34,7 @@ struct HomescreenView: View {
                     VStack{
                         HStack{
                             NavigationLink(destination: ChallengeView()) {
-                                Image("ChallengeSign")
+                                Image("PromptSign")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .scaleEffect(0.5)

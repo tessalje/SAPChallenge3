@@ -29,7 +29,7 @@ struct ChallengeView: View {
                     
                     HStack {
                         NavigationLink(destination: HomescreenView()) {
-                            Image("PromptSign")
+                            Image("ChallengeSign")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .scaleEffect(0.47)
