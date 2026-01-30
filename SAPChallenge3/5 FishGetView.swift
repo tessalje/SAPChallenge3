@@ -89,10 +89,9 @@ struct FishGetView: View {
                     Circle()
                         .fill(Color.fishblue)
                         .frame(width: 35, height: mouthOpen ? 35 : 5)
-                        .offset(x: -110, y: 30)
+                        .offset(x: -110, y: 15)
                         .animation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true),
                                    value: mouthOpen)
-
                 }
                 
             }

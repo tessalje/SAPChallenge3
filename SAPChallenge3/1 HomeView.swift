@@ -35,7 +35,7 @@ struct HomescreenView: View {
                     VStack {
                         HStack {
                             Button {
-                                promptView = 2 // ✅Switch views
+                                promptView = 2
                             } label: {
                                 Image("PromptSign")
                                     .resizable()
@@ -43,7 +43,6 @@ struct HomescreenView: View {
                                     .scaleEffect(0.5)
                      
                             }
-                            
                             
                             Button {
                                 promptView = 3
@@ -145,13 +144,11 @@ struct PromptView: View {
         NavigationStack {
             if promptView == 1 {
                 HomescreenView()
-                
             } else if promptView == 2 {
                 ChallengeView()
             } else if promptView == 3 {
                 GalleryView()
             }
-            
         }
     }
 }

@@ -10,6 +10,8 @@ import SwiftUI
 struct FishGetChallengeView: View {
     @State private var mouthOpen = true
     @State private var randomRod = ""
+    @Environment(\.dismiss) private var dismiss
+    @AppStorage("promptView") var promptView = 1
     
     @AppStorage("rod") var selectedRod: String = "Random Rod"
 
@@ -29,7 +31,7 @@ struct FishGetChallengeView: View {
                 ZStack {
                     Image("challengebox")
                         .resizable()
-                        .frame(width: 370, height: 420)
+                        .frame(width: 370, height: 450)
                     
                     Image("hook2")
                         .resizable()
@@ -43,16 +45,19 @@ struct FishGetChallengeView: View {
                             .offset(y: 50)
                             .padding(.bottom, 50)
                         
-                        NavigationLink(destination: ChallengeView()) {
-                            Text("Done")
-                                .foregroundStyle(.white)
-                                .padding(15)
-                                .padding(.horizontal, 50)
-                                .background(Color.darkred)
-                                .cornerRadius(50)
-                                .bold()
+                        Button {
+                            dismiss()
+                            promptView = 2
+                        } label: {
+                            Text("Go to Home")
+                            
                         }
-                        .padding(.top, 10)
+                        .foregroundStyle(.white)
+                        .padding(15)
+                        .padding(.horizontal, 50)
+                        .background(Color.darkred)
+                        .cornerRadius(50)
+                        .bold()
 
                     }
                     Text(randomRod)
@@ -65,7 +70,7 @@ struct FishGetChallengeView: View {
                     Circle()
                         .fill(Color.fishred)
                         .frame(width: 35, height: mouthOpen ? 35 : 5)
-                        .offset(x: -110, y: 20)
+                        .offset(x: -110, y: 15)
                         .animation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true),
                                    value: mouthOpen)
 

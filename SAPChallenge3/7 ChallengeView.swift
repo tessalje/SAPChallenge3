@@ -27,8 +27,6 @@ struct ChallengeView: View {
                 Spacer()
                 
                 HStack {
-                    
-                  
                     Button {
                         promptView = 1
                     } label: {
@@ -70,6 +68,9 @@ struct ChallengeView: View {
                 }
                 .padding(.bottom, 20)
             }
+        }
+        .onAppear {
+            selectedIsland = true
         }
         .navigationBarBackButtonHidden(true)
     }
